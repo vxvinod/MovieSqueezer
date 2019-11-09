@@ -21,6 +21,21 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+//    buildTypes.each {
+//        Properties properties = new Properties()
+//        properties.load(project.rootProject.file("local.properties").newDataInputStream())
+//        def tmdbApiKey = properties.getProperty("tmdb_api_key", "")
+//
+//        it.buildConfigField 'String', "TMDB_API_KEY", tmdbApiKey
+//
+//        it.resValue 'string', "api_key", tmdbApiKey
+//
+//    }
+}
+
+ext {
+    retrofitVer = '2.6.0'
+    gsonVer = '2.8.5'
 }
 
 dependencies {
@@ -34,4 +49,9 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    implementation "com.squareup.retrofit2:retrofit:$retrofitVer"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofitVer"
+    implementation "com.google.code.gson:gson:$gsonVer"
+
+
 }
