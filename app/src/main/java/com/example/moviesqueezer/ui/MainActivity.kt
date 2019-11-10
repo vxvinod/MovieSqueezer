@@ -4,7 +4,11 @@ import android.os.Bundle
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import android.widget.TextView
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.moviesqueezer.R
+import com.example.moviesqueezer.adapter.PopularMoviesAdapter
+import com.example.moviesqueezer.model.Movie
 import com.example.moviesqueezer.model.TMDBResponse
 import com.example.moviesqueezer.networkService.TMBDService
 import retrofit2.Call
@@ -16,6 +20,8 @@ import retrofit2.converter.gson.GsonConverterFactory
 class MainActivity : AppCompatActivity() {
 
     private lateinit var textMessage: TextView
+    private var movieList: List<Movie> = ArrayList<Movie>()
+
     private val onNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when (item.itemId) {
             R.id.navigation_home -> {
@@ -40,8 +46,10 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val navView: BottomNavigationView = findViewById(R.id.nav_view)
+        val movieRv: RecyclerView = findViewById(R.id.rv_movies)
 
-        textMessage = findViewById(R.id.message)
+        movieRv.layoutManager = GridLayoutManager(this, 2)
+        movieRv.adapter = PopularMoviesAdapter(this, movieList)
         navView.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener)
     }
 
@@ -65,11 +73,12 @@ class MainActivity : AppCompatActivity() {
             }
 
             override fun onFailure(call: Call<TMDBResponse>, t: Throwable) {
-               
+
                 textMessage!!.text = t.message
             }
         })
     }
+
 
     companion object {
         var BaseUrl = "https://api.themoviedb.org/3/"
