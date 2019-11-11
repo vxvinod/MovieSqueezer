@@ -1,6 +1,7 @@
 package com.example.moviesqueezer.ui
 
 import android.os.Bundle
+import android.util.Log
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import android.widget.TextView
@@ -19,22 +20,24 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var textMessage: TextView
-    private var movieList: List<Movie> = ArrayList<Movie>()
 
+    private var movieList: ArrayList<Movie> = ArrayList<Movie>()
+    private lateinit var  movieRv: RecyclerView
     private val onNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when (item.itemId) {
             R.id.navigation_home -> {
-                textMessage.setText(R.string.title_home)
-                getTMBDdata()
+                Log.e("MAIN ACT", "INSIDE NAV HOME")
+                getTMBDdata("popular")
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_dashboard -> {
-                textMessage.setText(R.string.title_dashboard)
+                Log.e("MAIN ACT", "INSIDE NAV DASHBOARD")
+
+                getTMBDdata("top_rated")
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_notifications -> {
-                textMessage.setText(R.string.title_notifications)
+
                 return@OnNavigationItemSelectedListener true
             }
         }
@@ -46,14 +49,16 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val navView: BottomNavigationView = findViewById(R.id.nav_view)
-        val movieRv: RecyclerView = findViewById(R.id.rv_movies)
+        movieRv = findViewById(R.id.rv_movies)
 
         movieRv.layoutManager = GridLayoutManager(this, 2)
         movieRv.adapter = PopularMoviesAdapter(this, movieList)
+        getTMBDdata("popular")
         navView.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener)
-    }
+   }
 
-    internal fun getTMBDdata() {
+    internal fun getTMBDdata(type: String) {
+        Log.e("MAIN ACT", "INSIDE getTMBDData")
         val retrofit = Retrofit.Builder()
             .baseUrl(BaseUrl)
             .addConverterFactory(GsonConverterFactory.create())
@@ -61,20 +66,31 @@ class MainActivity : AppCompatActivity() {
         val service = retrofit.create(TMBDService::class.java)
         val call = service.getMovieData(type, apiKey)
         call.enqueue(object : Callback<TMDBResponse> {
-            override fun onResponse(call: Call<TMDBResponse>, response: Response<TMDBResponse>) {
 
+            override fun onResponse(call: Call<TMDBResponse>, response: Response<TMDBResponse>) {
+               Log.e("MAIN ACT", "INSIDE ONRESPONSE")
+                movieList.clear()
                 if(response.code() == 200){
                     val movieResponse = response.body()
                     val stringBuilder = "Movie Pages" + movieResponse?.totalPages+
-                                        "total Results" + movieResponse?.totalResults
-                    textMessage!!.text = stringBuilder
+                                        "total Results" + movieResponse?.results
+                    movieResponse?.results?.let { movieList.addAll(it) }
+                    movieRv.adapter?.notifyDataSetChanged()
+                    for(movi in movieList){
+
+                        Log.e("MAIN ACT", movi.title.toString())
+                    }
+
+
+                    //textMessage!!.text = stringBuilder
+
 
                 }
             }
 
             override fun onFailure(call: Call<TMDBResponse>, t: Throwable) {
 
-                textMessage!!.text = t.message
+
             }
         })
     }
@@ -86,6 +102,8 @@ class MainActivity : AppCompatActivity() {
         var apiKey = "1f6edcf7cdec1a1942d5d87e84a1ab89"
     }
 }
+
+
 
 
 

@@ -7,7 +7,7 @@ class TMDBResponse {
     @SerializedName("page")
     var page: Int? = null;
     @SerializedName("results")
-    var results = ArrayList<TMDBResponse>()
+    var results = ArrayList<Movie>()
     @SerializedName("total_results")
     var totalResults: Int? = null
     @SerializedName("total_pages")

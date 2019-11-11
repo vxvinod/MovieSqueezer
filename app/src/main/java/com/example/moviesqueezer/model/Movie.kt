@@ -4,6 +4,28 @@ import com.google.gson.annotations.SerializedName
 import java.util.*
 
 class Movie {
+    constructor(
+        id: Int?,
+        originalTitle: String?,
+        overview: String?,
+        posterPath: String?,
+        release_date: String?,
+        title: String?,
+        rating: String?,
+        voteCount: String?,
+        backdropPath: String?
+    ) {
+        this.id = id
+        this.originalTitle = originalTitle
+        this.overview = overview
+        this.posterPath = posterPath
+        this.release_date = release_date
+        this.title = title
+        this.rating = rating
+        this.voteCount = voteCount
+        this.backdropPath = backdropPath
+    }
+
     @SerializedName("id")
     var id: Int? = null
     @SerializedName("original_title")

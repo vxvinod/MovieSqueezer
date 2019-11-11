@@ -17,13 +17,15 @@ class PopularMoviesAdapter( private val context: MainActivity, val movieList: Li
     }
 
     override fun getItemCount(): Int {
-        return 10
-        //return movieList.size
+        //return 10
+        return movieList.size
     }
 
     override fun onBindViewHolder(holder: PopularMoviesAdapter.MovieHolder, position: Int) {
-        Picasso.get().load("http://image.tmdb.org/t/p/w185//nBNZadXqJSdt05SHLqgT0HuC5Gm.jpg")
-            .into(holder.imageView)
+        if(movieList != null) {
+            Picasso.get().load("http://image.tmdb.org/t/p/w185//" + movieList[position].posterPath)
+                .into(holder.imageView)
+        }
     }
 
     class MovieHolder(view: View): RecyclerView.ViewHolder(view) {
