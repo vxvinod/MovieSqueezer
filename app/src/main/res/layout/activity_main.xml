@@ -4,7 +4,7 @@
      xmlns:app="http://schemas.android.com/apk/res-auto"
      xmlns:tools="http://schemas.android.com/tools"
      android:id="@+id/root_layout"
-     android:background="@color/colorPrimary"
+     android:background="@color/cardview_dark_background"
      android:layout_width="match_parent"
      android:layout_height="match_parent">
 
@@ -12,6 +12,7 @@
             android:id="@+id/appbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@color/cardview_dark_background"
             android:fitsSystemWindows="true"
             app:elevation="0dp">
 
@@ -20,7 +21,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:fitsSystemWindows="true"
-                app:contentScrim="@color/colorPrimary"
+                app:contentScrim="@color/cardview_dark_background"
                 app:expandedTitleMarginEnd="48dp"
                 app:expandedTitleMarginStart="48dp"
                 app:layout_scrollFlags="snap">
@@ -83,7 +84,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:background="@color/colorPrimary"
+                android:background="@color/cardview_dark_background"
                 app:itemBackground="?android:selectableItemBackground"
                 app:itemIconTint="@color/white"
                 app:itemTextColor="@color/black"
