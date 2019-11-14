@@ -46,9 +46,352 @@
             android:id="@+id/nested_scrollview"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/cardview_dark_background"
-            app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+            android:background="@color/colorPrimaryDark"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
+        <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:descendantFocusability="blocksDescendants"
+                android:nestedScrollingEnabled="false"
+                app:cardCornerRadius="4dp"
+                app:cardBackgroundColor="@color/colorPrimary"
+                app:cardElevation="6dp"
+                app:cardUseCompatPadding="true">
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                <TextView
+                        android:id="@+id/title_tv"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="132dp"
+                        android:gravity="center"
+                        android:paddingEnd="24dp"
+                        android:paddingStart="24dp"
+                        android:textSize="32sp"
+                        android:textStyle="bold"
+                        tools:text="A Very Long Title Of The Movie"/>
+
+                <TextView
+                        android:id="@+id/tagline_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="28dp"
+                        android:layout_marginStart="24dp"
+                        android:layout_marginEnd="24dp"
+                        android:gravity="center"
+                        android:textSize="16sp"
+                        tools:text="An even longer tagline of the movie."/>
+
+                <LinearLayout
+                        android:id="@+id/release_info"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginEnd="16dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="16dp"
+                        android:orientation="horizontal">
+
+                    <FrameLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="16dp"
+                            android:layout_weight="1">
+
+                        <TextView
+                                android:id="@+id/rating_label_tv"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:text="RATING"
+                                android:textSize="12sp"/>
+
+                        <TextView
+                                android:id="@+id/rating_value_tv"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:layout_marginTop="24dp"
+                                android:textSize="26sp"
+                                tools:text="10.0"/>
+
+                    </FrameLayout>
+
+                    <FrameLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="16dp"
+                            android:layout_weight="1.2">
+
+                        <TextView
+                                android:id="@+id/date_label_tv"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:text="RELEASE"
+                                android:textSize="12sp"/>
+
+                        <TextView
+                                android:id="@+id/date_value_tv"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:layout_marginTop="16dp"
+                                android:gravity="center"
+                                android:textSize="18sp"
+                                tools:text="Dec 13\n1989"/>
+                    </FrameLayout>
+
+                    <FrameLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="16dp"
+                            android:layout_weight="2">
+
+                        <TextView
+                                android:id="@+id/director_label_tv"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:text="DIRECTOR"
+                                android:textSize="12sp"/>
+
+                        <TextView
+                                android:id="@+id/director_value_tv"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:layout_marginTop="16dp"
+                                android:gravity="center"
+                                android:textSize="20sp"
+                                tools:text="Steven Spielberg"/>
+                    </FrameLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                        android:id="@+id/more_release_info"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginEnd="16dp"
+                        android:layout_marginStart="16dp"
+                        android:orientation="horizontal">
+
+                    <FrameLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="16dp"
+                            android:layout_weight="1">
+
+                        <TextView
+                                android:id="@+id/votes_label_tv"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:text="VOTES"
+                                android:textSize="12sp"/>
+
+                        <TextView
+                                android:id="@+id/votes_value_tv"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:layout_marginTop="26dp"
+                                android:textSize="18sp"
+                                tools:text="1313"/>
+                    </FrameLayout>
+
+                    <FrameLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="16dp"
+                            android:layout_weight="1.2">
+
+                        <TextView
+                                android:id="@+id/minutes_label_tv"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:text="MINUTES"
+                                android:textSize="12sp"/>
+
+                        <TextView
+                                android:id="@+id/minutes_value_tv"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:layout_marginTop="24dp"
+                                android:textSize="26sp"
+                                tools:text="133"/>
+                    </FrameLayout>
+
+                    <FrameLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="16dp"
+                            android:layout_weight="2">
+
+                        <TextView
+                                android:id="@+id/imdb_label_tv"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:text="IMDB"
+                                android:textSize="12sp"/>
+
+                        <ImageButton
+                                android:id="@+id/imdb_value_tv"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:layout_marginTop="16dp"
+                                android:background="@android:color/transparent"
+                                android:src="@mipmap/ic_launcher"/>
+                    </FrameLayout>
+                </LinearLayout>
+
+                <TextView
+                        android:id="@+id/plot_tv"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:lineSpacingExtra="8dp"
+                        android:paddingBottom="24dp"
+                        android:paddingEnd="24dp"
+                        android:paddingStart="24dp"
+                        android:textSize="16sp"
+                        tools:text="This is gonna be a plot synopsis of the movie. This data will be fetched by the TMDB API. And this will contain info of the movie script."/>
+
+                <TextView
+                        android:id="@+id/genres_label_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="24dp"
+                        android:text="GENRES"
+                        android:textSize="14sp"
+                        android:textStyle="bold" android:layout_marginLeft="24dp"/>
+
+                <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/genres_rv"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:nestedScrollingEnabled="true"/>
+
+                <TextView
+                        android:id="@+id/trailer_label_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="24dp"
+                        android:paddingEnd="24dp"
+                        android:paddingStart="24dp"
+                        android:text="TRAILERS"
+                        android:textSize="14sp"
+                        android:textStyle="bold"/>
+
+                <TextView
+                        android:id="@+id/trailers_hint_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingEnd="24dp"
+                        android:paddingStart="24dp"
+                        android:text="(SWIPE SIDEWAYS TO SEE MORE TRAILERS)"
+                        android:textSize="12sp"/>
+
+                <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="4dp"
+                        android:layout_marginTop="4dp">
+
+                    <bapspatil.silverscreener.model.MovieRecyclerView
+                            android:id="@+id/rv_trailers"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"/>
+
+                </FrameLayout>
+
+                <TextView
+                        android:id="@+id/cast_label_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="24dp"
+                        android:layout_marginTop="8dp"
+                        android:text="@string/cast"
+                        android:textSize="14sp"
+                        android:textStyle="bold" android:layout_marginLeft="24dp"/>
+
+                <FrameLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="16dp"
+                        android:layout_marginTop="8dp">
+
+                    <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/cast_rv"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:nestedScrollingEnabled="true"/>
+                </FrameLayout>
+
+
+                <TextView
+                        android:id="@+id/reviews_label_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingBottom="16dp"
+                        android:paddingEnd="24dp"
+                        android:paddingStart="24dp"
+                        android:paddingTop="8dp"
+                        android:text="@string/reviews"
+                        android:textSize="14sp"
+                        android:textStyle="bold"/>
+
+                <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:layout_marginEnd="16dp"
+                        android:layout_marginStart="16dp"
+                        android:background="@color/white"/>
+
+                <FrameLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                    <bapspatil.silverscreener.model.MovieRecyclerView
+                            android:id="@+id/rv_reviews"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="16dp"
+                            android:nestedScrollingEnabled="false"/>
+                </FrameLayout>
+
+                <TextView
+                        android:id="@+id/similar_label_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="24dp"
+                        android:layout_marginTop="16dp"
+                        android:text="SIMILAR MOVIES"
+                        android:textSize="14sp"
+                        android:textStyle="bold" android:layout_marginLeft="24dp"/>
+
+                <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/similar_movies_rv"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:nestedScrollingEnabled="true"/>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
     </androidx.core.widget.NestedScrollView>
     <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fav_button"
