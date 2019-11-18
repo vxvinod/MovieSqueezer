@@ -1,14 +1,18 @@
 package com.example.moviesqueezer.ui
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import android.widget.TextView
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.moviesqueezer.R
+import com.example.moviesqueezer.adapter.OnItemClickListener
 import com.example.moviesqueezer.adapter.PopularMoviesAdapter
+import com.example.moviesqueezer.adapter.addOnItemClickListener
 import com.example.moviesqueezer.model.Movie
 import com.example.moviesqueezer.model.TMDBResponse
 import com.example.moviesqueezer.networkService.TMBDService
@@ -55,6 +59,13 @@ class MainActivity : AppCompatActivity() {
         movieRv.adapter = PopularMoviesAdapter(this, movieList)
         getTMBDdata("popular")
         navView.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener)
+
+        movieRv.addOnItemClickListener(object: OnItemClickListener {
+            override fun onItemClicked(position: Int, view: View) {
+                val intent = Intent(this@MainActivity, DetailsActivity::class.java)
+                startActivity(intent)
+            }
+        })
    }
 
     internal fun getTMBDdata(type: String) {

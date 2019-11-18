@@ -312,7 +312,7 @@
                         android:layout_marginBottom="4dp"
                         android:layout_marginTop="4dp">
 
-                    <bapspatil.silverscreener.model.MovieRecyclerView
+                    <androidx.recyclerview.widget.RecyclerView
                             android:id="@+id/rv_trailers"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"/>
@@ -366,7 +366,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content">
 
-                    <bapspatil.silverscreener.model.MovieRecyclerView
+                    <androidx.recyclerview.widget.RecyclerView
                             android:id="@+id/rv_reviews"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -421,8 +421,5 @@
                 android:scaleType="centerCrop"
                 android:transitionName="posterTransition"
                 tools:srcCompat="@drawable/ic_launcher_background"/>
-    </androidx.cardview.widget.CardView>
-
-
     </androidx.cardview.widget.CardView>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
