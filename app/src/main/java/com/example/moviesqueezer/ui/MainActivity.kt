@@ -62,7 +62,10 @@ class MainActivity : AppCompatActivity() {
 
         movieRv.addOnItemClickListener(object: OnItemClickListener {
             override fun onItemClicked(position: Int, view: View) {
+
                 val intent = Intent(this@MainActivity, DetailsActivity::class.java)
+                intent.putExtra("movieDetails", movieList[position])
+                Log.e("Main Activity", "Name"+movieList[position].title)
                 startActivity(intent)
             }
         })

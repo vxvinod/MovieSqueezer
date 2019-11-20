@@ -1,9 +1,10 @@
 package com.example.moviesqueezer.model
 
 import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 import java.util.*
 
-class Movie {
+class Movie : Serializable{
     constructor(
         id: Int?,
         originalTitle: String?,
